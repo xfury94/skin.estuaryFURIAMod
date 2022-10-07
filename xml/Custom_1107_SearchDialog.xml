@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<window type="dialog" id="1107">
+	<defaultcontrol always="true">9000</defaultcontrol>
+	<include>Animation_DialogPopupOpenClose</include>
+	<controls>
+		<control type="group">
+			<centerleft>50%</centerleft>
+			<width>600</width>
+			<centertop>60%</centertop>
+			<height>700</height>
+			<include content="DialogBackgroundCommons">
+				<param name="width" value="600" />
+				<param name="height" value="80" />
+				<param name="header_label" value="$LOCALIZE[137]" />
+				<param name="header_id" value="" />
+			</include>
+			<control type="panel" id="9000">
+				<include>ButtonMenuList</include>
+				<content>
+					<item>
+						<label>Procurar no TMDB</label>
+						<onclick>Dialog.Close(all)</onclick>
+						<onclick condition="System.AddonIsEnabled(plugin.video.themoviedb.helper)">ActivateWindow(10025,"plugin://plugin.video.themoviedb.helper/?info=dir_multisearch&tmdb_type=None",return)</onclick>
+						<onclick condition="System.HasAddon(plugin.video.themoviedb.helper) + !System.AddonIsEnabled(plugin.video.themoviedb.helper)">EnableAddon(plugin.video.themoviedb.helper)</onclick>
+						<onclick condition="!System.HasAddon(plugin.video.themoviedb.helper)">InstallAddon(plugin.video.themoviedb.helper)</onclick>
+					</item>
+					<item>
+						<label>$LOCALIZE[31114]</label>
+						<onclick>Dialog.Close(all)</onclick>
+						<onclick condition="System.AddonIsEnabled(plugin.video.youtube)">ActivateWindow(videos,"plugin://plugin.video.youtube/kodion/search/list/",return)</onclick>
+						<onclick condition="System.HasAddon(plugin.video.youtube) + !System.AddonIsEnabled(plugin.video.youtube)">EnableAddon(plugin.video.youtube)</onclick>
+						<onclick condition="!System.HasAddon(plugin.video.youtube)">InstallAddon(plugin.video.youtube)</onclick>
+					</item>
+				</content>
+			</control>
+		</control>
+	</controls>
+</window>
